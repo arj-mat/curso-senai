@@ -7,6 +7,9 @@
 	
 	Mateus Araújo - https://github.com/arj-mat/curso-senai/
 	Senai 2021
+	
+	As coordenadas no tabuleiro são representadas por letras de A até I, 
+	que devem ser escolhidas em cada jogada.
 */
 
 #define ESTADO_EM_ANDAMENTO 1
@@ -176,10 +179,9 @@ void proximaJogada(int jogadaAnteriorFoiValida) {
 	printf("É a vez do jogador %c.\nInforme a letra: ", jogadorAtual);
 	
 	fflush(stdin);
-	
 	scanf("%c", &letraJogada);
 	
-	registrarJogada(letraJogada);
+	registrarJogada(tolower(letraJogada));
 }
 
 main() {
