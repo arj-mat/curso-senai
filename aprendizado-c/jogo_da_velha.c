@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-#include <math.h>
 #include <locale.h>
 
 /*
@@ -22,13 +21,14 @@ const char LETRAS_PONTOS[9] = {
 	'd', 'e', 'f',
 	'g', 'h', 'i'
 };
+
 const char PONTO_VAZIO = '-';
 const char JOGADOR_A = 'X';
 const char JOGADOR_B = 'O';
 
-char tabuleiro[3][3];
-
 char jogadorAtual;
+
+char tabuleiro[3][3];
 
 void imprimirTabuleiro() {
 	int i, j, indice;
@@ -72,7 +72,6 @@ int verificarEstadoPartida() {
 		char sequencia[3] = {tabuleiro[i][0], tabuleiro[i][1], tabuleiro[i][2]};
 		
 		if (verificarSequenciaVitoria(sequencia) == true) {
-			printf("\nVitoria horizontal: %s", sequencia);
 			return ESTADO_VITORIA;
 		}
 	}
@@ -100,7 +99,7 @@ int verificarEstadoPartida() {
 		return ESTADO_VITORIA;
 	}
 	
-	// Verificar se existe algum ponto vazio que pode ser jogado (caso contrário houve empate):
+	// Verificar se existe algum ponto vazio que ainda pode ser jogado (caso contrário houve empate):
 	for(i = 0; i < 3; i++) {
 		for(j = 0; j < 3; j++) {
 			if (tabuleiro[i][j] == PONTO_VAZIO)
@@ -112,19 +111,21 @@ int verificarEstadoPartida() {
 }
 
 void registrarJogada(char letra) {
-	int i, j, linha = -1, coluna = -1, indice;
+	int i, j, linha = -1, coluna = -1, indice = 0;
 	
 	// Obter a linha e a coluna que a letra da jogada representa:
-	for(i = 0, indice = 0; i < 3; i++) {
+	for(i = 0; i < 3; i++) {
 		if (linha != -1 && coluna != -1)
 			break; // Linha e coluna já foram encontradas, então parar o loop principal.
 		
-		for(j = 0; j < 3; j++, indice++) {
+		for(j = 0; j < 3; j++) {
 			if (LETRAS_PONTOS[indice] == letra) {
 				linha = i;
 				coluna = j;
 				break;
 			}
+			
+			indice++;
 		}
 	}
 	
