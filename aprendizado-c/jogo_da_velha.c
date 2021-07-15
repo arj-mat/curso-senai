@@ -93,7 +93,7 @@ int verificarEstadoPartida() {
 		return ESTADO_VITORIA;
 	}
 	
-	// Verificar vitória na diagonal inversa:
+	// Verificar vitória na diagonal secundária:
 	char sequenciaDiag2[3] = {tabuleiro[2][0], tabuleiro[1][1], tabuleiro[0][2]};
 	
 	if (verificarSequenciaVitoria(sequenciaDiag2) == true) {
