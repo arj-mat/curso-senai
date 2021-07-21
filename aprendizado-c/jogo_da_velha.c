@@ -58,7 +58,7 @@ void imprimirTabuleiro() {
 	printf("\n");
 }
 
-int verificarSequenciaVitoria(char *sequencia) {
+int verificarSequenciaVitoria(char sequencia[]) {
 	char sequenciaVencedora[4] = {jogadorAtual, jogadorAtual, jogadorAtual, '\0'};
 	
 	if (strcmp(sequencia, sequenciaVencedora) == 0)
